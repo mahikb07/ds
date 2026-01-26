@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+#define SIZE 10     // Size of Hash Table
+
+int table[SIZE];    // Hash Table
+
+// Hash Function (Modulo Division)
+int hashFunction(int key)
+{
+    return key % SIZE;
+}
+
+int main()
+{
+    int key, index;
+
+    // Initialize hash table with -1 (empty)
+    for (int i = 0; i < SIZE; i++)
+        table[i] = -1;
+
+    cout << "Enter key to insert: ";
+    cin >> key;
+
+    index = hashFunction(key);
+
+    // Check for collision
+    if (table[index] == -1)
+    {
+        table[index] = key;
+        cout << "Key stored at index: " << index << endl;
+    }
+    else
+    {
+        cout << "Collision occurred at index: " << index << endl;
+    }
+
+    // Display Hash Table
+    cout << "\nHash Table:\n";
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << i << " -> " << table[i] << endl;
+    }
+
+    return 0;
+}
